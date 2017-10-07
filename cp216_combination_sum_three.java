@@ -1,4 +1,4 @@
-//description: https://leetcode.com/problems/combination-sum/description/
+//description: https://leetcode.com/problems/combination-sum-iii/description/
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
