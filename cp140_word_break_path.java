@@ -6,7 +6,6 @@ import java.util.Set;
 
 public class Leetcode140 {
     public static void main(String args[]) {
-
     }
 
     public static List<String> wordBreak(String s, List<String> wordDict) {
@@ -40,11 +39,11 @@ public class Leetcode140 {
                 }
             }
         }
-        dfs(s, set, dp, maxLength, m, "", result);
+        dfs(s, set, dp, m, "", result);
         return result;
     }
 
-    private static void dfs(String s, Set<String> set, boolean[] dp, int maxLength, int end, String sentence, List<String> result) {
+    private static void dfs(String s, Set<String> set, boolean[] dp, int end, String sentence, List<String> result) {
         if(end == 0) {
             sentence = sentence.substring(0, sentence.length()-1);
             result.add(sentence);
@@ -56,7 +55,7 @@ public class Leetcode140 {
         for(int i=1; i<=end; i++) {
             String word = s.substring(end-i, end);
             if(set.contains(word)) {
-                dfs(s, set, dp, maxLength, end-i, word+" "+sentence, result);
+                dfs(s, set, dp, end-i, word+" "+sentence, result);
             }
         }
     }
