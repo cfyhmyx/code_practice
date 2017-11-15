@@ -7,19 +7,12 @@ public class Leetcode067 {
     }
 
     public static String addBinary(String a, String b) {
-        if(b.length() > a.length()){
-            String temp = a;
-            a = b;
-            b = temp;
-        }
-        int diff = a.length()-b.length();
-        for(int i=0; i<diff; i++) {
-            b = "0" + b;
-        }
         int carry = 0;
         StringBuilder result = new StringBuilder();
-        for(int i=a.length()-1; i>=0; i--) {
-            int sum = a.charAt(i)-'0'+b.charAt(i)-'0'+carry;
+        for(int i=a.length()-1, j=b.length()-1; i>=0||j>=0; i--,j--) {
+            int num1 = i>=0 ? a.charAt(i)-'0' : 0;
+            int num2 = j>=0 ? b.charAt(j)-'0' : 0;
+            int sum = num1 + num2 + carry;
             result.insert(0, sum%2);
             carry = sum/2;
         }
