@@ -26,7 +26,17 @@ public class Leetcode200 {
         return result;
     }
 
+    //more concise way
     public static void getIsland(int row, int col, int m, int n, char[][] grid, boolean[][] visited) {
+        if(row<0 || col<0 || row>=m || col>= n || visited[row][col] || grid[row][col] != '1') return;
+        visited[row][col] = true;
+        getIsland(row-1, col, m, n, grid, visited);
+        getIsland(row+1, col, m, n, grid, visited);
+        getIsland(row, col-1, m, n, grid, visited);
+        getIsland(row, col+1, m, n, grid, visited);
+    }
+
+    /*public static void getIsland(int row, int col, int m, int n, char[][] grid, boolean[][] visited) {
         visited[row][col] = true;
         if(row>0 && grid[row-1][col]=='1' && !visited[row-1][col]) {
             getIsland(row-1, col, m, n, grid, visited);
@@ -40,6 +50,6 @@ public class Leetcode200 {
         if(col<n-1 && grid[row][col+1] == '1' && !visited[row][col+1]){
             getIsland(row, col+1, m, n, grid, visited);
         }
-    }
+    }*/
 
 }
