@@ -1,4 +1,4 @@
-//Given an unsorted array of integers, find the length of longest continuous increasing subsequence (subarray).
+//Given an unsorted array of integers, find the number of longest increasing subsequence.
 
 public class Leetcode673 {
     public static void main(String args[]) {
