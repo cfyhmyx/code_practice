@@ -21,8 +21,20 @@ public class Leetcode206 {
         }
     }
 
-    //iteration
+    //easiest method
     public static ListNode reverseList(ListNode head) {
+        ListNode prev = null;
+        while (head != null) {
+            ListNode next = head.next;
+            head.next = prev;
+            prev = head;
+            head = next;
+        }
+        return prev;
+    }
+
+    //iteration
+    /*public static ListNode reverseList(ListNode head) {
         ListNode first = null;
         ListNode second = head;
         while(first!=null || second!=null) {
@@ -33,7 +45,7 @@ public class Leetcode206 {
             second = temp;
         }
         return first;
-    }
+    }*/
 
     //recursion
     /*public static ListNode reverseList(ListNode head) {
