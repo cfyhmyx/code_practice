@@ -6,6 +6,7 @@ public class Leetcode633 {
         System.out.println(result);
     }
 
+    //binary search
     public static boolean judgeSquareSum(int c) {
         if (c < 0) {
             return false;
