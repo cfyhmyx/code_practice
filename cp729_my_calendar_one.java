@@ -1,6 +1,7 @@
-//A Range Module is a module that tracks ranges of numbers. Your task is to design and implement the following interfaces in an efficient manner.
-//description: https://leetcode.com/problems/range-module/description/.
+//https://leetcode.com/problems/my-calendar-i/description/
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -15,12 +16,13 @@ public class Leetcode729 {
         System.out.println(book3);
     }
 
+    //O(logn)
     static class MyCalendar {
 
         private TreeMap<Integer, Integer> map;
 
         public MyCalendar() {
-        map = new TreeMap<>();
+            map = new TreeMap<>();
         }
 
         public boolean book(int start, int end) {
@@ -34,4 +36,22 @@ public class Leetcode729 {
             return true;
         }
     }
+
+    //O(n), more space
+    /*static class MyCalendar {
+
+        private List<int[]> list;
+
+        public MyCalendar() {
+            list = new ArrayList<>();
+        }
+
+        public boolean book(int start, int end) {
+            for(int[] time : list) {
+                if (time[0] < end && start < time[1]) return false;
+            }
+            list.add(new int[]{start, end});
+            return true;
+        }
+    }*/
 }
