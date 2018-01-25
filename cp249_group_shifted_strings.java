@@ -8,32 +8,27 @@ import java.util.*;
 public class Leetcode249 {
     public static void main(String args[]) {
         String[] strs = {"abc","bcd","acef","xyz","az","ba","a","z"};
-        List<List<String>> result = groupAnagrams(strs);
+        List<List<String>> result = groupStrings(strs);
         for(List<String> group : result) {
             System.out.println(group);
         }
     }
 
-    public static List<List<String>> groupAnagrams(String[] strs) {
-        List<List<String>> result = new ArrayList<>();
-        HashMap<String, List<String>> map = new HashMap();
-        for(String str : strs) {
-            if(str.isEmpty()) continue;
-            int offset = str.charAt(0)-'a';
-            char[] group = new char[26];
-            for(char ch : str.toCharArray()) {
-                int index = ch-offset-'a' < 0 ? ch-offset-'a'+26 : ch-offset-'a';
-                group[index]++;
+    public static List<List<String>> groupStrings(String[] strings) {
+        Map<String, List<String>> map = new HashMap<>();
+        List<List<String>> res = new ArrayList<>();
+        for (String t: strings) {
+            char[] sc = t.toCharArray();
+            int dif = sc[0] - 'a';
+            for (int i = 0; i < sc.length; i++) {
+                sc[i] -= dif;
+                if (sc[i] < 'a') sc[i] += 26;
             }
-            String anagram = new String(group);
-            if(map.get(anagram) == null) {
-                map.put(anagram, new ArrayList<>());
-            }
-            map.get(anagram).add(str);
+            String key = new String(sc);
+            if (!map.containsKey(key)) map.put(key, new ArrayList<>());
+            map.get(key).add(t);
         }
-        for(String key : map.keySet()){
-            result.add(new ArrayList<>(map.get(key)));
-        }
-        return result;
+        res.addAll(map.values());
+        return res;
     }
 }
