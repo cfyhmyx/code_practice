@@ -1,13 +1,8 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+//https://leetcode.com/problems/utf-8-validation/description/
 
 public class Leetcode393 {
     public static void main(String args[]) {
-        String t = "abcadea";
-        String s = "dea";
-        boolean result = isSubsequence(s, t);
-        System.out.println(result);
+
     }
 
     public static boolean validUtf8(int[] data) {
