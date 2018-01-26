@@ -3,6 +3,7 @@
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
+import java.util.TreeMap;
 
 public class Leetcode253 {
     public static void main(String args[]) {
@@ -16,6 +17,22 @@ public class Leetcode253 {
     }
 
     public static int minMeetingRooms(Interval[] intervals) {
+        if(intervals.length < 1) return 0;
+        TreeMap<Integer, Integer> map = new TreeMap<>();
+        for(Interval interval : intervals) {
+            map.put(interval.start, map.getOrDefault(interval.start, 0)+1);
+            map.put(interval.end, map.getOrDefault(interval.end, 0)-1);
+        }
+        int room = 0;
+        int meeting = 0;
+        for(int val : map.values()) {
+            meeting += val;
+            room = Math.max(room, meeting);
+        }
+        return room;
+    }
+
+    /*public static int minMeetingRooms(Interval[] intervals) {
         if(intervals.length < 1) return 0;
         Arrays.sort(intervals, new Comparator<Interval>() {
             @Override
@@ -40,7 +57,7 @@ public class Leetcode253 {
             queue.offer(intervals[i]);
         }
         return result;
-    }
+    }*/
 
     public static class Interval {
         int start;
