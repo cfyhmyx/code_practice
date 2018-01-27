@@ -7,11 +7,12 @@ import java.util.Map;
 
 public class Leetcode523 {
     public static void main(String args[]) {
-        int[] nums = {0,0};
-        boolean result = checkSubarraySum(nums, 0);
+        int[] nums = {0,1,0};
+        boolean result = checkSubarraySum(nums, 1);
         System.out.println(result);
     }
 
+    //similar to leetcode560, 525, 001
     public static boolean checkSubarraySum(int[] nums, int k) {
         Map<Integer, Integer> map = new HashMap<>();
         map.put(0, -1);
