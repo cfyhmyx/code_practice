@@ -10,6 +10,7 @@ public class Leetcode325 {
         System.out.println(result);
     }
 
+    //array, hashmap
     public static int maxSubArrayLen(int[] nums, int k) {
         int sum = 0, max = 0;
         HashMap<Integer, Integer> map = new HashMap<>();
