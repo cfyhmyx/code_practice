@@ -7,6 +7,7 @@ public class Leetcode525 {
 
     }
 
+    //similar to leetcode560, 523, 001
     public static int findMaxLength(int[] nums) {
         Map<Integer, Integer> map = new HashMap<>();
         int max = 0;
@@ -16,7 +17,7 @@ public class Leetcode525 {
             else zero--;
             if (zero == 0) max = i + 1;
             if (!map.containsKey(zero)) map.put(zero, i);
-            //find the same key means the array between last position and current position has equal number of 0 and 1
+                //find the same key means the array between last position and current position has equal number of 0 and 1
             else max = Math.max(max, i - map.get(zero));
         }
         return max;
