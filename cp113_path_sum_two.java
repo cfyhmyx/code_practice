@@ -25,31 +25,22 @@ public class Leetcode113 {
 
     public static List<List<Integer>> pathSum(TreeNode root, int sum) {
         List<List<Integer>> result = new ArrayList<>();
-        if(root != null) {
-            List<Integer> path = new ArrayList<>();
-            path.add(root.val);
-            helper(root, sum, result, path);
-        }
+        if(root == null) return result;
+        helper(root, sum, result, new ArrayList<>());
         return result;
     }
 
-    public static void helper(TreeNode current, int sum, List<List<Integer>> result, List<Integer> path) {
-        if(current.left == null && current.right == null) {
-            if(sum-current.val == 0){
+    public static void helper(TreeNode root, int sum, List<List<Integer>> result, List<Integer> path) {
+        if(root == null) return;
+        path.add(root.val);
+        if(root.left == null && root.right == null) {
+            if(sum - root.val == 0) {
                 result.add(new ArrayList<>(path));
             }
-            return;
         }
-        if(current.left != null) {
-            path.add(current.left.val);
-            helper(current.left, sum - current.val, result, path);
-            path.remove(path.size()-1);
-        }
-        if(current.right != null) {
-            path.add(current.right.val);
-            helper(current.right, sum - current.val, result, path);
-            path.remove(path.size()-1);
-        }
+        helper(root.left, sum-root.val, result, path);
+        helper(root.right, sum-root.val, result, path);
+        path.remove(path.size()-1);
     }
 
     public  static class TreeNode {
