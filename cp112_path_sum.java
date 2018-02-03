@@ -21,18 +21,6 @@ public class Leetcode112 {
         System.out.println(result);
     }
 
-    /*public static boolean hasPathSum(TreeNode root, int sum) {
-        return helper(root, sum);
-    }
-
-    public static boolean helper(TreeNode current, int sum) {
-        if(current == null) return false;
-        if(current.left == null && current.right == null) {
-            return sum-current.val == 0;
-        }
-        return helper(current.left, sum-current.val) || helper(current.right, sum-current.val);
-    }*/
-
     public static boolean hasPathSum(TreeNode root, int sum) {
         if(root == null) return false;
         if(root.left == null && root.right == null) {
