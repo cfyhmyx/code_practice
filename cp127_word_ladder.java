@@ -28,18 +28,18 @@ public class Leetcode127 {
         if(dict.contains(endWord)) {
             endSet.add(endWord);
         }
-        int result = 2;
+        int result = 1;
         while(!startSet.isEmpty()) {
             Set<String> temp = new HashSet<>();
             for(String word : startSet) {
                 dict.remove(word);
                 for(int i=0; i<word.length(); i++) {
                     char[] chars = word.toCharArray();
-                    for(char c='a'; c<'z'; c++) {
+                    for(char c='a'; c<='z'; c++) {
                         chars[i] = c;
                         String newWord = String.valueOf(chars);
                         if(endSet.contains(newWord)) {
-                            return result;
+                            return result+1;
                         }
                         if(dict.contains(newWord)) {
                             temp.add(newWord);
