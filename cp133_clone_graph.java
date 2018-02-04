@@ -4,14 +4,10 @@ import java.util.*;
 
 public class Leetcode133 {
     public static void main(String args[]) {
-        UndirectedGraphNode node = new UndirectedGraphNode(0);
-        node.neighbors.add(new UndirectedGraphNode(node.label));
-        node.neighbors.add(new UndirectedGraphNode(node.label));
-        UndirectedGraphNode result = cloneGraph(node);
-        System.out.println(result.label);
+
     }
 
-    public static UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
+    /*public static UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
         if(node == null) return node;
         Map<UndirectedGraphNode, UndirectedGraphNode> myMap = new HashMap<>();
         Queue<UndirectedGraphNode> myQueue = new LinkedList<>();
@@ -29,16 +25,12 @@ public class Leetcode133 {
             }
         }
         return myMap.get(node);
-    }
+    }*/
 
     //dfs
-    /*private HashMap<Integer, UndirectedGraphNode> map = new HashMap<>();
+    private HashMap<Integer, UndirectedGraphNode> map = new HashMap<>();
 
-    public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
-        return clone(node);
-    }
-
-    private UndirectedGraphNode clone(UndirectedGraphNode node) {
+    private UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
         if (node == null) return null;
 
         if (map.containsKey(node.label)) {
@@ -47,10 +39,10 @@ public class Leetcode133 {
         UndirectedGraphNode clone = new UndirectedGraphNode(node.label);
         map.put(clone.label, clone);
         for (UndirectedGraphNode neighbor : node.neighbors) {
-            clone.neighbors.add(clone(neighbor));
+            clone.neighbors.add(cloneGraph(neighbor));
         }
         return clone;
-    }*/
+    }
 
     static class UndirectedGraphNode {
         int label;
