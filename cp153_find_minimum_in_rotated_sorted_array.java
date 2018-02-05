@@ -10,30 +10,20 @@ public class Leetcode153 {
     }
 
     public static int findMin(int[] nums) {
-        for(int i=1; i<nums.length; i++) {
-            if(nums[i] < nums[i-1]){
-                return nums[i];
+        int low = 0;
+        int high = nums.length-1;
+        while(low < high) {
+            if(nums[low] < nums[high]) {
+                return nums[low];
+            }
+            int mid = low + (high-low)/2;
+            if(nums[mid] >= nums[low]) {
+                low = mid+1;
+            } else {
+                high = mid;
             }
         }
-        return nums[0];
+        return nums[low];
     }
 
-    //better way
-    /*  int start=0,end=num.size()-1;
-
-        while (start<end) {
-        if (num[start]<num[end])
-            return num[start];
-
-        int mid = (start+end)/2;
-
-        if (num[mid]>=num[start]) {
-            start = mid+1;
-        } else {
-            end = mid;
-        }
-    }
-
-        return num[start];
-        */
 }
