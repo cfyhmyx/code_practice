@@ -8,7 +8,7 @@ public class Leetcode209 {
         int result = minSubArrayLen(7, nums);
         System.out.println(result);
     }
-
+    //O(n)
     public static int minSubArrayLen(int s, int[] nums) {
         int result = Integer.MAX_VALUE;
         int left = 0;
