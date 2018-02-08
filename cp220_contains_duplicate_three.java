@@ -9,26 +9,24 @@ public class Leetcode220 {
     }
 
     public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
-        if (nums == null || nums.length == 0 || k <= 0) {
+        if (nums.length < 2 || k == 0) {
             return false;
         }
+        TreeSet<Long> set = new TreeSet<>();
 
-        final TreeSet<Integer> values = new TreeSet<>();
-        for (int ind = 0; ind < nums.length; ind++) {
-
-            final Integer floor = values.floor(nums[ind] + t);
-            final Integer ceil = values.ceiling(nums[ind] - t);
-            if ((floor != null && floor >= nums[ind])
-                    || (ceil != null && ceil <= nums[ind])) {
+        int i = 0;
+        while (i < nums.length) {
+            Long floor = set.floor((long) nums[i]);
+            Long ceiling = set.ceiling((long) nums[i]);
+            if ((floor != null && nums[i] - floor <= t ) ||
+                    (ceiling != null && ceiling - nums[i] <= t)) {
                 return true;
             }
-
-            values.add(nums[ind]);
-            if (ind >= k) {
-                values.remove(nums[ind - k]);
+            set.add((long) nums[i++]);
+            if (i > k) {
+                set.remove((long) nums[i - k - 1]);
             }
         }
-
         return false;
     }
 
