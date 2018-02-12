@@ -12,36 +12,10 @@ public class Leetcode294 {
     }
 
     public static boolean canWin(String s) {
-        if(s.length()<2) return false;
-        Map<String, Boolean> map = new HashMap<>();
-        return canWin(s, map);
-    }
-
-    private static boolean canWin(String s, Map<String, Boolean> map) {
-        List<String> arr = new ArrayList<>();
-        if(map.containsKey(s)) return map.get(s);
-        for(int i=0; i<s.length()-1; i++) {
-            if(s.charAt(i) == '+' && s.charAt(i+1) == '+') {
-                StringBuilder sb = new StringBuilder(s);
-                sb.replace(i,i+2, "--");
-                arr.add(sb.toString());
-            }
-        }
-        for(String str : arr) {
-            if(!canWin(str, map)) {
-                map.put(s, true);
-                return true;
-            }
-        }
-        map.put(s, false);
-        return false;
-    }
-
-    /*public boolean canWin(String s) {
         return helper(s, new HashMap<>());
     }
 
-    private boolean helper(String s, Map<String, Boolean> map) {
+    private static boolean helper(String s, Map<String, Boolean> map) {
         if (map.containsKey(s)) {
             return map.get(s);
         }
@@ -58,6 +32,6 @@ public class Leetcode294 {
 
         map.put(s, false);
         return false;
-    }*/
+    }
 
 }
