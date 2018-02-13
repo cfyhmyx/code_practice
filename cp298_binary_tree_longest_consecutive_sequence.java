@@ -10,18 +10,18 @@ public class Leetcode298 {
         TreeNode n4 = new TreeNode(4);
         TreeNode n5 = new TreeNode(5);
         TreeNode n6 = new TreeNode(2);
-        /*n1.right = n3;
+        n1.right = n3;
         n3.left = n2;
         n3.right = n4;
-        n4.right = n5;*/
-        n2.right = n3;
-        n3.left = n6;
-        n6.left = n1;
-        int result = longestConsecutive(n2);
+        n4.right = n5;
+        //n2.right = n3;
+        //n3.left = n6;
+        //n6.left = n1;
+        int result = longestConsecutive(n1);
         System.out.println(result);
     }
 
-    public static int longestConsecutive(TreeNode root) {
+    /*public static int longestConsecutive(TreeNode root) {
         if (root == null) return 0;
         return dfs(root, 0, root.val);
     }
@@ -33,6 +33,31 @@ public class Leetcode298 {
         int left = dfs(root.left, seq, root.val+1);
         int right = dfs(root.right, seq, root.val+1);
         return Math.max(seq,Math.max(left,right));
+    }*/
+
+    private static int result = 0;
+
+    public static int longestConsecutive(TreeNode root) {
+        helper(root);
+        return result;
+    }
+
+    private static int helper(TreeNode root) {
+        if(root == null) return 0;
+        int left = helper(root.left);
+        int right = helper(root.right);
+        if(root.left != null && root.left.val == root.val+1) {
+            left = left+1;
+        } else {
+            left = 1;
+        }
+        if(root.right != null && root.right.val == root.val+1) {
+            right = right+1;
+        } else {
+            right = 1;
+        }
+        result = Math.max(result, Math.max(left, right));
+        return Math.max(left, right);
     }
 
     static class TreeNode {
