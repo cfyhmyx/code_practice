@@ -6,22 +6,20 @@
 
 public class Leetcode162 {
     public static void main(String args[]) {
-        int[] nums = {2,1};
+        int[] nums = {1,2,1};
         int peak = findPeakElement(nums);
         System.out.println(nums[peak]);
     }
 
     public static int findPeakElement(int[] nums) {
         int start = 0;
-        int end = nums.length;
+        int end = nums.length-1;
         while(start < end) {
             int mid = start + (end-start)/2;
-            if(mid > start && nums[mid] < nums[mid-1]) {
+            if(nums[mid] > nums[mid+1]) {
                 end = mid;
-            } else if (mid > start && nums[mid] > nums[mid-1]) {
-                start = mid;
-            } else{
-                break;
+            } else {
+                start = mid+1;
             }
         }
         return start;
